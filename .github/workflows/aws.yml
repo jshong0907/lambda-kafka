@@ -63,7 +63,7 @@ jobs:
     - name: Create Lambda Function with ECR image
       id: create-lambda
       env:
-        AWS_ACCOUNT_UUID: ${{ env.AWS_ACCOUNT_UUID }}
+        AWS_ACCOUNT_UUID: ${{ secrets.AWS_ACCOUNT_UUID }}
         AWS_REGION: ${{ env.AWS_REGION }}
       run: |
         aws lambda create-function --function-name $LAMBDA_FUNCTION --package-type Image --code ImageUri=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --role arn:aws:iam::$AWS_ACCOUNT_UUID:role/lambda-ex
