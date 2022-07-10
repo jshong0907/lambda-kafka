@@ -1,9 +1,6 @@
-import sys
+from schemas import InputSchema
 
 
 def handler(event, context):
-    return {
-        'statusCode': 200,
-        'systemVersion': sys.version,
-        'receivedData': event.get('data'),
-    }
+    input = InputSchema(**event)
+    return input.json()
